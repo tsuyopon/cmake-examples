@@ -7,6 +7,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules
                       ${CMAKE_MODULE_PATH})
 
 # find the cppcheck binary
+# 以下のfind_packageが実行されると cmake/modules/FindCppCheck.cmake ファイルを参照します。
 find_package(CppCheck)
 
 # static analysis. Should be before adding subprojects
@@ -18,6 +19,7 @@ add_subdirectory(subproject2)
 
 
 # Add the "make analysis" target
+# ビルド後、make analysisで実行することができる
 if( CPPCHECK_FOUND )
     add_custom_target(analysis)
     ADD_DEPENDENCIES(analysis ${ALL_ANALYSIS_TARGETS})
